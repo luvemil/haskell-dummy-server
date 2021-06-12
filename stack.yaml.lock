@@ -4,23 +4,23 @@
 #   https://docs.haskellstack.org/en/stable/lock_files
 
 snapshots:
-- original: nightly-2020-11-06
+- original: lts-17.15
   completed:
-    sha256: d8fa9554a98e6d3c1cf05ca6c5b7cfadedc6ad6461df6eb5b8202fafbf102bad
-    url: https://raw.githubusercontent.com/commercialhaskell/stackage-snapshots/master/nightly/2020/11/6.yaml
-    size: 544237
+    sha256: 72e87841a0ab5b72f6f018e8ee692fd972b7bb32a944990f028e10d6eb528e63
+    url: https://raw.githubusercontent.com/commercialhaskell/stackage-snapshots/master/lts/17/15.yaml
+    size: 567679
 packages:
 - original:
-    hackage: polysemy-plugin-0.2.5.1
+    hackage: polysemy-1.5.0.0
   completed:
     pantry-tree:
-      sha256: 9720d9a1675c7ac3e2635b8c9f002f7ab0764eb60738a3405603cb33bdffc493
-      size: 1232
-    hackage: polysemy-plugin-0.2.5.1@sha256:61c6c0aad2852377aa5d5a8f9639a437905e3a6f0e2a99a41e96fb231dc86836,2952
+      sha256: 7b7d379751f79f0e0e5afcdf3d8092e5b8e04515710f21f514aa8f29ce4835f4
+      size: 4438
+    hackage: polysemy-1.5.0.0@sha256:7edb723e7f703fe273a40e43fe33f6e8f7659fe60759e8698def1481262d314d,6246
 - original:
-    hackage: servant-server-0.18.1
+    hackage: polysemy-plugin-0.3.0.0
   completed:
     pantry-tree:
-      sha256: afba7a901c86dfe0c65d18470bca144b371cbff13d4fb516247b200fbd62597b
-      size: 2614
-    hackage: servant-server-0.18.1@sha256:f0824cfa57b23b6b698dbd93e11598c4c5355aaa26121f48c091f6e5f03623fc,5665
+      sha256: 8d0bbea846d4410b769687daa8595ff1349efd02c1ab528a857883388dd2db45
+      size: 1162
+    hackage: polysemy-plugin-0.3.0.0@sha256:22e7553d0fddb48d9484ba1c71d2ed825213fcb214866d9b502ee02bfb960cb4,3121

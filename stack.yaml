@@ -1,7 +1,7 @@
-resolver: nightly-2020-11-06
+resolver: lts-17.15
 packages:
   - .
 extra-deps:
-  - polysemy-plugin-0.2.5.1
-  - servant-server-0.18.1
+  - polysemy-1.5.0.0
+  - polysemy-plugin-0.3.0.0
 system-ghc: true
