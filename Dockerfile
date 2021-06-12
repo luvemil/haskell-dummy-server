@@ -1,4 +1,4 @@
-FROM fpco/stack-build:lts-17.15 as build
+FROM fpco/stack-build-small:lts-17.15 as build
 RUN mkdir -p /opt/build/dist
 COPY . /opt/build
 RUN cd /opt/build && stack build --system-ghc --copy-bind --local-bin-path dist
