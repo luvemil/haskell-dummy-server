@@ -1,0 +1,7 @@
+resolver: nightly-2020-11-06
+packages:
+  - .
+extra-deps:
+  - polysemy-plugin-0.2.5.1
+  - servant-server-0.18.1
+system-ghc: true

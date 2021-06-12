@@ -1,0 +1,224 @@
+cabal-version: 1.12
+
+-- This file has been generated from package.yaml by hpack version 0.34.4.
+--
+-- see: https://github.com/sol/hpack
+
+name:           haskell-dummy-server
+version:        0.1.0.0
+description:    Please see the README on GitHub at <https://github.com/luvemil/haskell-dummy-server#readme>
+homepage:       https://github.com/luvemil/haskell-dummy-server#readme
+bug-reports:    https://github.com/luvemil/haskell-dummy-server/issues
+author:         Marco Tarantino
+maintainer:     taran.marco@protonmail.com
+copyright:      2021 Marco Tarantino
+license:        BSD3
+license-file:   LICENSE
+build-type:     Simple
+extra-source-files:
+    README.md
+    ChangeLog.md
+
+source-repository head
+  type: git
+  location: https://github.com/luvemil/haskell-dummy-server
+
+library
+  exposed-modules:
+      App.Runner
+      App.Server
+      App.State
+      App.StateManager
+      Lib
+  other-modules:
+      Paths_haskell_dummy_server
+  hs-source-dirs:
+      src
+  default-extensions:
+      BangPatterns
+      ConstraintKinds
+      DataKinds
+      DeriveGeneric
+      DerivingStrategies
+      DerivingVia
+      FlexibleContexts
+      FlexibleInstances
+      GADTs
+      GeneralizedNewtypeDeriving
+      InstanceSigs
+      KindSignatures
+      LambdaCase
+      MultiParamTypeClasses
+      OverloadedStrings
+      OverloadedLabels
+      PolyKinds
+      RankNTypes
+      RecordWildCards
+      ScopedTypeVariables
+      TypeApplications
+      TypeFamilies
+      TypeOperators
+  ghc-options: -Wall -Wincomplete-uni-patterns -Wincomplete-record-updates -Wcompat -Widentities -Wredundant-constraints -fhide-source-paths -Wpartial-fields -fplugin=Polysemy.Plugin
+  build-depends:
+      aeson
+    , base >=4.7 && <5
+    , bytestring
+    , constraints
+    , containers
+    , directory
+    , filepath
+    , generic-lens
+    , http-api-data
+    , lens
+    , mtl
+    , network
+    , optparse-generic
+    , polysemy
+    , polysemy-plugin
+    , servant
+    , servant-server
+    , sqlite-simple
+    , stm
+    , text
+    , time
+    , unix
+    , unliftio
+    , unliftio-core
+    , unordered-containers
+    , uuid
+    , vector
+    , warp
+    , websockets
+    , wuss
+  default-language: Haskell2010
+
+executable haskell-dummy-server-exe
+  main-is: Main.hs
+  other-modules:
+      Paths_haskell_dummy_server
+  hs-source-dirs:
+      app
+  default-extensions:
+      BangPatterns
+      ConstraintKinds
+      DataKinds
+      DeriveGeneric
+      DerivingStrategies
+      DerivingVia
+      FlexibleContexts
+      FlexibleInstances
+      GADTs
+      GeneralizedNewtypeDeriving
+      InstanceSigs
+      KindSignatures
+      LambdaCase
+      MultiParamTypeClasses
+      OverloadedStrings
+      OverloadedLabels
+      PolyKinds
+      RankNTypes
+      RecordWildCards
+      ScopedTypeVariables
+      TypeApplications
+      TypeFamilies
+      TypeOperators
+  ghc-options: -Wall -Wincomplete-uni-patterns -Wincomplete-record-updates -Wcompat -Widentities -Wredundant-constraints -fhide-source-paths -Wpartial-fields -fplugin=Polysemy.Plugin -threaded -rtsopts -with-rtsopts=-N
+  build-depends:
+      aeson
+    , base >=4.7 && <5
+    , bytestring
+    , constraints
+    , containers
+    , directory
+    , filepath
+    , generic-lens
+    , haskell-dummy-server
+    , http-api-data
+    , lens
+    , mtl
+    , network
+    , optparse-generic
+    , polysemy
+    , polysemy-plugin
+    , servant
+    , servant-server
+    , sqlite-simple
+    , stm
+    , text
+    , time
+    , unix
+    , unliftio
+    , unliftio-core
+    , unordered-containers
+    , uuid
+    , vector
+    , warp
+    , websockets
+    , wuss
+  default-language: Haskell2010
+
+test-suite haskell-dummy-server-test
+  type: exitcode-stdio-1.0
+  main-is: Spec.hs
+  other-modules:
+      Paths_haskell_dummy_server
+  hs-source-dirs:
+      test
+  default-extensions:
+      BangPatterns
+      ConstraintKinds
+      DataKinds
+      DeriveGeneric
+      DerivingStrategies
+      DerivingVia
+      FlexibleContexts
+      FlexibleInstances
+      GADTs
+      GeneralizedNewtypeDeriving
+      InstanceSigs
+      KindSignatures
+      LambdaCase
+      MultiParamTypeClasses
+      OverloadedStrings
+      OverloadedLabels
+      PolyKinds
+      RankNTypes
+      RecordWildCards
+      ScopedTypeVariables
+      TypeApplications
+      TypeFamilies
+      TypeOperators
+  ghc-options: -Wall -Wincomplete-uni-patterns -Wincomplete-record-updates -Wcompat -Widentities -Wredundant-constraints -fhide-source-paths -Wpartial-fields -fplugin=Polysemy.Plugin -threaded -rtsopts -with-rtsopts=-N
+  build-depends:
+      aeson
+    , base >=4.7 && <5
+    , bytestring
+    , constraints
+    , containers
+    , directory
+    , filepath
+    , generic-lens
+    , haskell-dummy-server
+    , http-api-data
+    , lens
+    , mtl
+    , network
+    , optparse-generic
+    , polysemy
+    , polysemy-plugin
+    , servant
+    , servant-server
+    , sqlite-simple
+    , stm
+    , text
+    , time
+    , unix
+    , unliftio
+    , unliftio-core
+    , unordered-containers
+    , uuid
+    , vector
+    , warp
+    , websockets
+    , wuss
+  default-language: Haskell2010
