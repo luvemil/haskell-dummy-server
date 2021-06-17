@@ -1,5 +1,6 @@
 module App.Runner where
 
+import App.Config
 import App.Server
 import App.State
 import Control.Lens.Operators
@@ -11,19 +12,18 @@ import Polysemy.AtomicState
 import Polysemy.Trace
 import Servant.Server
 
-data Config = Config
-  { cInitialState :: IORef AppState
-  }
+createApp :: Config -> IO Application
+createApp config = do
+  appOn <- newOnApp config
+  appStateRef <- newIORef $ appOn
+  pure $ serve (Proxy @StatusAPI) (liftServer appStateRef)
 
-createApp :: Config -> Application
-createApp config = serve (Proxy @StatusAPI) (liftServer config)
-
-liftServer :: Config -> ServerT StatusAPI Handler
-liftServer config = hoistServer (Proxy @StatusAPI) (interpretServer config) statusServer
+liftServer :: IORef AppState -> ServerT StatusAPI Handler
+liftServer appStateRef = hoistServer (Proxy @StatusAPI) (interpretServer appStateRef) statusServer
  where
-  interpretServer c sem =
+  interpretServer asRef sem =
     sem
-      & runAtomicStateIORef (cInitialState c)
+      & runAtomicStateIORef asRef
       & traceToIO
       & runM
       & liftToHandler

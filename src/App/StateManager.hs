@@ -3,6 +3,7 @@
 module App.StateManager where
 
 import App.State
+import Control.Lens.Operators
 import Polysemy
 import Polysemy.AtomicState
 import Polysemy.Trace
@@ -19,22 +20,23 @@ turnOn :: (Member Trace r, Member (AtomicState AppState) r, Member (Embed IO) r)
 turnOn = do
     trace "Called turnOn"
     sOrig <- atomicGet
-    case sOrig of
-        AppState (AppOn _) -> do
+    case sOrig ^. #asRunStatus of
+        (AppOn _) -> do
             trace "Already ON, nothing to do"
             pure sOrig
-        AppState AppOff -> do
+        AppOff -> do
             trace "Found app OFF, turning ON"
-            s <- embed newOnApp
+            s <- embed $ turnAppOn sOrig
             atomicPut s
             pure s
 
 turnOff :: (Member Trace r, Member (AtomicState AppState) r) => Sem r AppState
 turnOff = do
     trace "Called turnOff"
-    let s = AppState AppOff
-    atomicPut s
-    pure s
+    s <- atomicGet
+    let newState = s & #asRunStatus .~ AppOff
+    atomicPut newState
+    pure newState
 
 showState :: (Member Trace r, Member (AtomicState AppState) r) => Sem r AppState
 showState = trace "Called showState" >> atomicGet

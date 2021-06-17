@@ -25,6 +25,7 @@ source-repository head
 
 library
   exposed-modules:
+      App.Config
       App.Runner
       App.Server
       App.State
