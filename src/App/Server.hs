@@ -1,14 +1,14 @@
 module App.Server where
 
-import App.State
-import App.StateManager
+import App.State.Server (StatusAPI, statusServer)
+import App.State.StateManager (StateConstraints)
+import App.User.Server (UserAPI, userServer)
 import Polysemy
 import Servant
 
-type StatusAPI =
-    "status" :> Get '[JSON] AppState
-        :<|> "start" :> Post '[JSON] AppState
-        :<|> "stop" :> Post '[JSON] AppState
+type AppAPI =
+    "status" :> StatusAPI
+        :<|> "user" :> UserAPI
 
-statusServer :: StateConstraints r => ServerT StatusAPI (Sem r)
-statusServer = showState :<|> turnOn :<|> turnOff
+appServer :: StateConstraints r => ServerT AppAPI (Sem r)
+appServer = statusServer :<|> userServer

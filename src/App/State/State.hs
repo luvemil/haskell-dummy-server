@@ -1,4 +1,4 @@
-module App.State where
+module App.State.State where
 
 import App.Config
 import Control.Lens.Operators ((&), (.~), (^.))

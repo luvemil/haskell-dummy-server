@@ -28,9 +28,14 @@ library
       App.Config
       App.Runner
       App.Server
-      App.State
-      App.StateManager
+      App.State.Server
+      App.State.State
+      App.State.StateManager
+      App.User.Server
+      App.User.User
       Lib
+      Lib.Enrich
+      Lib.Id
   other-modules:
       Paths_haskell_dummy_server
   hs-source-dirs:

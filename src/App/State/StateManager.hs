@@ -1,8 +1,8 @@
 {-# LANGUAGE TemplateHaskell #-}
 
-module App.StateManager where
+module App.State.StateManager where
 
-import App.State
+import App.State.State
 import Control.Lens.Operators
 import Polysemy
 import Polysemy.AtomicState

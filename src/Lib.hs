@@ -4,7 +4,7 @@ module Lib (
 
 import App.Config
 import App.Runner
-import App.State
+import App.State.State
 import Control.Lens
 import Data.IORef
 import Data.Maybe

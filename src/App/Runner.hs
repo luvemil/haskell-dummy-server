@@ -2,7 +2,7 @@ module App.Runner where
 
 import App.Config
 import App.Server
-import App.State
+import App.State.State
 import Control.Lens.Operators
 import Control.Monad.Except
 import Data.IORef
@@ -16,10 +16,10 @@ createApp :: Config -> IO Application
 createApp config = do
   appOn <- newOnApp config
   appStateRef <- newIORef $ appOn
-  pure $ serve (Proxy @StatusAPI) (liftServer appStateRef)
+  pure $ serve (Proxy @AppAPI) (liftServer appStateRef)
 
-liftServer :: IORef AppState -> ServerT StatusAPI Handler
-liftServer appStateRef = hoistServer (Proxy @StatusAPI) (interpretServer appStateRef) statusServer
+liftServer :: IORef AppState -> ServerT AppAPI Handler
+liftServer appStateRef = hoistServer (Proxy @AppAPI) (interpretServer appStateRef) appServer
  where
   interpretServer asRef sem =
     sem
