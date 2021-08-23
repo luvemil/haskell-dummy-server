@@ -13,16 +13,15 @@ runStorageWithIORef storeRef = interpret $ \case
     GetByKey k -> do
         store <- embed $ readIORef storeRef
         pure $ HM.lookup k store
-    FilterByKey f ->
-        do
-            store <- embed $ readIORef storeRef
-            let entries =
-                    mapMaybe
-                        (`HM.lookup` store)
-                        ( HM.keys store
-                            & filter f
-                        )
-            pure entries
+    FilterByKey f -> do
+        store <- embed $ readIORef storeRef
+        let entries =
+                mapMaybe
+                    (`HM.lookup` store)
+                    ( HM.keys store
+                        & filter f
+                    )
+        pure entries
     FilterByValue f -> pure []
     InsertByKey k v -> pure ()
     DeleteByKey k -> pure ()
