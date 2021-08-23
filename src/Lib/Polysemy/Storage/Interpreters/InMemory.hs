@@ -4,7 +4,7 @@ import Control.Lens.Operators
 import qualified Data.HashMap.Lazy as HM
 import Data.Hashable (Hashable)
 import Data.IORef
-import Data.Maybe (fromJust, isJust)
+import Data.Maybe (mapMaybe)
 import Lib.Polysemy.Storage.Effect
 import Polysemy
 
@@ -17,11 +17,11 @@ runStorageWithIORef storeRef = interpret $ \case
         do
             store <- embed $ readIORef storeRef
             let entries =
-                    HM.keys store
-                        & filter f
-                        & map (`HM.lookup` store)
-                        & filter isJust
-                        & map fromJust
+                    mapMaybe
+                        (`HM.lookup` store)
+                        ( HM.keys store
+                            & filter f
+                        )
             pure entries
     FilterByValue f -> pure []
     InsertByKey k v -> pure ()
