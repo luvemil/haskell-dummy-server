@@ -22,6 +22,21 @@ runStorageWithIORef storeRef = interpret $ \case
                         & filter f
                     )
         pure entries
-    FilterByValue f -> pure []
-    InsertByKey k v -> pure ()
-    DeleteByKey k -> pure ()
+    FilterByValue f -> do
+        store <- embed $ readIORef storeRef
+        let entries =
+                store
+                    & HM.toList
+                    & map snd
+                    & filter f
+        pure entries
+    InsertByKey k v -> do
+        store <- embed $ readIORef storeRef
+        let newStore = HM.insert k v store
+        embed $ writeIORef storeRef newStore
+        pure ()
+    DeleteByKey k -> do
+        store <- embed $ readIORef storeRef
+        let newStore = HM.delete k store
+        embed $ writeIORef storeRef newStore
+        pure ()
