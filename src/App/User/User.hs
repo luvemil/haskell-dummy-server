@@ -17,4 +17,6 @@ data UserResource = UserResource
 instance FromJSON UserResource
 instance ToJSON UserResource
 
+type UserId = Id User
+
 type User = WithId "id" UserResource

@@ -33,6 +33,7 @@ library
       App.State.StateManager
       App.User.Server
       App.User.User
+      App.User.UserManager
       Lib
       Lib.Enrich
       Lib.Id
