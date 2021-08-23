@@ -50,6 +50,7 @@ dependencies:
   - servant-server
   - warp
   - mtl
+  - hashable
 
 ghc-options:
   - -Wall

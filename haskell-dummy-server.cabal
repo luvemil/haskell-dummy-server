@@ -37,6 +37,10 @@ library
       Lib
       Lib.Enrich
       Lib.Id
+      Lib.Polysemy.Storage
+      Lib.Polysemy.Storage.Effect
+      Lib.Polysemy.Storage.Interpreters
+      Lib.Polysemy.Storage.Interpreters.InMemory
   other-modules:
       Paths_haskell_dummy_server
   hs-source-dirs:
@@ -75,6 +79,7 @@ library
     , directory
     , filepath
     , generic-lens
+    , hashable
     , http-api-data
     , lens
     , mtl
@@ -139,6 +144,7 @@ executable haskell-dummy-server-exe
     , directory
     , filepath
     , generic-lens
+    , hashable
     , haskell-dummy-server
     , http-api-data
     , lens
@@ -205,6 +211,7 @@ test-suite haskell-dummy-server-test
     , directory
     , filepath
     , generic-lens
+    , hashable
     , haskell-dummy-server
     , http-api-data
     , lens
