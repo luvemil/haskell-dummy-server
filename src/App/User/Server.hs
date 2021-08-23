@@ -9,7 +9,7 @@ type UserAPI =
         :<|> ReqBody '[JSON] UserResource :> Post '[JSON] User
         :<|> ReqBody '[JSON] User :> Put '[JSON] User
         :<|> Capture "userId" UserId :> Get '[JSON] User
-        :<|> Capture "userId" UserId :> Delete '[] NoContent
+        :<|> Capture "userId" UserId :> DeleteNoContent
 
 userServer :: ServerT UserAPI (Sem r)
 userServer = undefined
