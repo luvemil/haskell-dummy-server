@@ -1,15 +1,11 @@
 module App.User.Server where
 
 import App.User.User
+import Lib.Resource.Server (ResouceAPI)
 import Polysemy
 import Servant
 
-type UserAPI =
-    Get '[JSON] [User]
-        :<|> ReqBody '[JSON] UserResource :> Post '[JSON] User
-        :<|> ReqBody '[JSON] User :> Put '[JSON] User
-        :<|> Capture "userId" UserId :> Get '[JSON] User
-        :<|> Capture "userId" UserId :> DeleteNoContent
+type UserAPI = ResouceAPI UserResource User UserId "userId"
 
 userServer :: ServerT UserAPI (Sem r)
 userServer = undefined

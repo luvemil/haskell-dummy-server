@@ -37,10 +37,14 @@ library
       Lib
       Lib.Enrich
       Lib.Id
+      Lib.Id.Effects
+      Lib.Id.Types
       Lib.Polysemy.Storage
       Lib.Polysemy.Storage.Effect
       Lib.Polysemy.Storage.Interpreters
       Lib.Polysemy.Storage.Interpreters.InMemory
+      Lib.Resource.ResourceManager
+      Lib.Resource.Server
   other-modules:
       Paths_haskell_dummy_server
   hs-source-dirs:
