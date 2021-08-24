@@ -110,5 +110,9 @@ tests:
       - -threaded
       - -rtsopts
       - -with-rtsopts=-N
+      - -Wpartial-fields
+      - -fplugin=Polysemy.Plugin
     dependencies:
       - haskell-dummy-server
+      - hspec
+      - QuickCheck

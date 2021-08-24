@@ -174,6 +174,7 @@ test-suite haskell-dummy-server-test
   type: exitcode-stdio-1.0
   main-is: Spec.hs
   other-modules:
+      Lib.Polysemy.StorageSpec
       Paths_haskell_dummy_server
   hs-source-dirs:
       test
@@ -201,9 +202,10 @@ test-suite haskell-dummy-server-test
       TypeApplications
       TypeFamilies
       TypeOperators
-  ghc-options: -Wall -Wincomplete-uni-patterns -Wincomplete-record-updates -Wcompat -Widentities -Wredundant-constraints -fhide-source-paths -Wpartial-fields -fplugin=Polysemy.Plugin -threaded -rtsopts -with-rtsopts=-N
+  ghc-options: -Wall -Wincomplete-uni-patterns -Wincomplete-record-updates -Wcompat -Widentities -Wredundant-constraints -fhide-source-paths -Wpartial-fields -fplugin=Polysemy.Plugin -threaded -rtsopts -with-rtsopts=-N -Wpartial-fields -fplugin=Polysemy.Plugin
   build-depends:
-      aeson
+      QuickCheck
+    , aeson
     , base >=4.7 && <5
     , bytestring
     , constraints
@@ -213,6 +215,7 @@ test-suite haskell-dummy-server-test
     , generic-lens
     , hashable
     , haskell-dummy-server
+    , hspec
     , http-api-data
     , lens
     , mtl
