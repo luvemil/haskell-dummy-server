@@ -178,6 +178,7 @@ test-suite haskell-dummy-server-test
   type: exitcode-stdio-1.0
   main-is: Spec.hs
   other-modules:
+      Lib.IdSpec
       Lib.Polysemy.StorageSpec
       Paths_haskell_dummy_server
   hs-source-dirs:
