@@ -18,13 +18,14 @@ import Data.Text (Text, pack)
 import GHC.Generics (Generic)
 import GHC.TypeLits (KnownSymbol, symbolVal)
 
+import Data.Hashable (Hashable)
 import Data.UUID (toText)
 import Data.UUID.V4 (nextRandom)
 import qualified Web.Internal.HttpApiData as Web
 
 newtype Id a = Id {unId :: Text}
     deriving stock (Show, Generic)
-    deriving newtype (Eq, Ord, Read, FromJSON, ToJSON, Web.FromHttpApiData)
+    deriving newtype (Eq, Ord, Read, FromJSON, ToJSON, Web.FromHttpApiData, Hashable)
 
 type AnyId = Id ()
 

@@ -1,11 +1,14 @@
 module App.User.Server where
 
 import App.User.User
-import Lib.Resource.Server (ResouceAPI)
+import Lib.Resource.ResourceManager (FullConstraint)
+import Lib.Resource.Server (ResourceAPIWithId, resourceServer)
 import Polysemy
 import Servant
 
-type UserAPI = ResouceAPI UserResource User UserId "userId"
+type UserAPI = ResourceAPIWithId UserResource "id" "userId"
 
-userServer :: ServerT UserAPI (Sem r)
-userServer = undefined
+type UserServerConstraint r = FullConstraint UserResource "id" r
+
+userServer :: UserServerConstraint r => ServerT UserAPI (Sem r)
+userServer = resourceServer
