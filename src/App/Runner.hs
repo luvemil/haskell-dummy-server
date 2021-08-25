@@ -21,8 +21,8 @@ import Servant.Server
 createApp :: Config -> IO Application
 createApp config = do
   appOn <- newOnApp config
-  appStateRef <- newIORef $ appOn
-  userStorageRef <- newIORef $ HM.empty
+  appStateRef <- newIORef appOn
+  userStorageRef <- newIORef HM.empty
   pure $ serve (Proxy @AppAPI) (liftServer appStateRef userStorageRef)
 
 liftServer :: IORef AppState -> IORef (HM.HashMap UserId User) -> ServerT AppAPI Handler
