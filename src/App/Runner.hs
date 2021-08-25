@@ -6,6 +6,7 @@ import App.State.State
 import App.User.User (User, UserId)
 import Control.Lens.Operators
 import Control.Monad.Except
+import qualified Data.ByteString.Lazy.Char8 as BS
 import qualified Data.HashMap.Lazy as HM
 import Data.IORef
 import Data.Proxy
@@ -35,9 +36,8 @@ liftServer appStateRef userStorageRef = hoistServer (Proxy @AppAPI) (interpretSe
       & traceToIO
       & runError @String
       & runM
-      & handleError
       & liftToHandler
-  liftToHandler = Handler . ExceptT . fmap Right
-  -- TODO: fix handling the error
-  handleError :: IO (Either String a) -> IO a
-  handleError = _
+  liftToHandler = Handler . ExceptT . fmap handleError
+  handleError :: Either String a -> Either ServerError a
+  handleError (Left message) = Left err400{errBody = BS.pack message}
+  handleError (Right x) = Right x
