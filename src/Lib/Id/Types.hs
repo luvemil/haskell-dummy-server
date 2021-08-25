@@ -9,6 +9,9 @@ module Lib.Id.Types (
 
 import Data.Aeson (FromJSON, ToJSON, (.:))
 import qualified Data.Aeson as Aeson
+import Data.Generics.Labels
+import Data.Generics.Product
+import Data.Generics.Sum
 import Data.HashMap.Strict (insert)
 import Data.Proxy
 import Data.Text (Text, pack)
